@@ -1,6 +1,8 @@
 package application.model;
 
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -14,7 +16,8 @@ public class Employee {
     private Long id;
     private String name;
     private String lastName;
-    private String title;
+    @Enumerated(EnumType.STRING)
+    private Degree degree;
     private Double salary;
 
     public Long getId() {
@@ -41,12 +44,12 @@ public class Employee {
         this.lastName = lastName;
     }
 
-    public String getTitle() {
-        return title;
+    public Degree getTitle() {
+        return degree;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setTitle(Degree degree) {
+        this.degree = degree;
     }
 
     public Double getSalary() {
@@ -63,13 +66,13 @@ public class Employee {
                 + "id=" + id
                 + ", name='" + name + '\''
                 + ", lastName='" + lastName + '\''
-                + ", title='" + title + '\''
+                + ", degree='" + degree + '\''
                 + ", salary=" + salary
                 +
                 '}';
     }
 
-    public enum Title {
+    public enum Degree {
         ASSISTANT,
         ASSOCIATE_PROFESSOR,
         PROFESSOR

@@ -1,8 +1,7 @@
-package application.main;
+package application.service;
 
 import application.model.Department;
 import application.model.Employee;
-import application.service.DepartmentService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -21,19 +20,19 @@ public class DataInjector {
         bob.setName("Bob");
         bob.setLastName("Bobinsky");
         bob.setSalary(800d);
-        bob.setTitle(String.valueOf(Employee.Title.PROFESSOR));
+        bob.setTitle(Employee.Degree.PROFESSOR);
 
         Employee alice = new Employee();
         alice.setName("Alice");
         alice.setLastName("Alison");
         alice.setSalary(800d);
-        alice.setTitle(String.valueOf(Employee.Title.PROFESSOR));
+        alice.setTitle(Employee.Degree.PROFESSOR);
 
         Employee boris = new Employee();
         boris.setName("Boris");
         boris.setLastName("Borisov");
         boris.setSalary(700d);
-        boris.setTitle(String.valueOf(Employee.Title.ASSISTANT));
+        boris.setTitle(Employee.Degree.ASSISTANT);
 
         Department politology = new Department();
         politology.setName("politology");

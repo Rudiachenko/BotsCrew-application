@@ -2,7 +2,7 @@ package application.console;
 
 import application.console.answer.AverageSalaryCommand;
 import application.console.answer.CountOfEmployeeCommand;
-import application.console.answer.DepartmentNameCommand;
+import application.console.answer.DepartmentHeadNameCommand;
 import application.console.answer.GlobalSearchCommand;
 import application.console.answer.MenuCommand;
 import application.console.answer.QuitCommand;
@@ -39,7 +39,7 @@ public class Application {
     }
 
     public void handleCommand(String command) {
-        operation.put(HEAD_OF_DEPARTMENT, new DepartmentNameCommand(departmentService));
+        operation.put(HEAD_OF_DEPARTMENT, new DepartmentHeadNameCommand(departmentService));
         operation.put(STATISTICS, new StatisticCommand(departmentService));
         operation.put(AVERAGE_SALARY, new AverageSalaryCommand(departmentService));
         operation.put(COUNT_OF_EMPLOYEE, new CountOfEmployeeCommand(departmentService));
