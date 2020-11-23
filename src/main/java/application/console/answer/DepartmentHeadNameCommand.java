@@ -19,7 +19,7 @@ public class DepartmentHeadNameCommand implements ConsoleHandler {
     @Override
     public void handleCommand() {
         System.out.println("Please specify the name of the "
-                + "department or print 'menu' to back to menu");
+                + "department or enter 'menu' to back to menu");
         Scanner scanner = new Scanner(System.in);
         String nameOfDepartment = scanner.nextLine();
         if (nameOfDepartment.equalsIgnoreCase("menu")) {

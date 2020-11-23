@@ -21,7 +21,7 @@ public class GlobalSearchCommand implements ConsoleHandler {
 
     @Override
     public void handleCommand() {
-        System.out.println("Please specify template or print 'menu' to back to menu");
+        System.out.println("Please specify template or enter 'menu' to back to menu");
         Scanner scanner = new Scanner(System.in);
         String template = scanner.nextLine();
         if (template.equalsIgnoreCase("menu")) {
