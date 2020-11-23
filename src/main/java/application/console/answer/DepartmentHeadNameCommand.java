@@ -9,10 +9,10 @@ import javax.persistence.NoResultException;
 import org.springframework.stereotype.Component;
 
 @Component
-public class DepartmentNameCommand implements ConsoleHandler {
+public class DepartmentHeadNameCommand implements ConsoleHandler {
     private final DepartmentService departmentService;
 
-    public DepartmentNameCommand(DepartmentService departmentService) {
+    public DepartmentHeadNameCommand(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
 

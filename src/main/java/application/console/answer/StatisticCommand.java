@@ -12,6 +12,9 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class StatisticCommand implements ConsoleHandler {
+    private static final Employee.Degree PROFESSOR = Employee.Degree.PROFESSOR;
+    private static final Employee.Degree ASSISTANT = Employee.Degree.ASSISTANT;
+    private static final Employee.Degree ASSOCIATE_PROFESSOR = Employee.Degree.ASSOCIATE_PROFESSOR;
     private final DepartmentService departmentService;
 
     @Autowired
@@ -35,11 +38,11 @@ public class StatisticCommand implements ConsoleHandler {
             int associateProfessors = 0;
             int professors = 0;
             for (Employee employee : employees) {
-                if ("PROFESSOR".equals(employee.getTitle())) {
+                if (PROFESSOR.equals(employee.getTitle())) {
                     professors++;
-                } else if ("ASSISTANT".equals(employee.getTitle())) {
+                } else if (ASSISTANT.equals(employee.getTitle())) {
                     assistants++;
-                } else if ("ASSOCIATE_PROFESSOR".equals(employee.getTitle())) {
+                } else if (ASSOCIATE_PROFESSOR.equals(employee.getTitle())) {
                     associateProfessors++;
                 }
             }

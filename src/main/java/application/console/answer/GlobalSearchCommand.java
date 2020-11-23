@@ -29,6 +29,7 @@ public class GlobalSearchCommand implements ConsoleHandler {
         }
         List<String> answer = new ArrayList<>();
         List<Department> allDepartments = departmentService.findAll();
+
         for (Department department : allDepartments) {
             List<Employee> employees = department.getEmployees();
             employees.stream()
