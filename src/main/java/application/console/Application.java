@@ -50,7 +50,8 @@ public class Application {
         command = command.toLowerCase();
         while (true) {
             if (!operation.containsKey(command)) {
-                System.out.println("Enter correct data please or enter 'quit' to close application");
+                System.out.println("Enter correct data please or enter "
+                        + "'quit' to close application");
                 start();
             } else if (operation.containsKey(command)) {
                 operation.get(command).handleCommand();
