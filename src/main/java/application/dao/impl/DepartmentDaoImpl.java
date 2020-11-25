@@ -37,7 +37,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
             if (transaction != null) {
                 transaction.rollback();
             }
-            throw new DataProcessingException("Can't insert cinema hall "
+            throw new DataProcessingException("Can't insert department "
                     + department.toString(), e);
         } finally {
             if (session != null) {
