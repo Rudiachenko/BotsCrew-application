@@ -42,11 +42,11 @@ public class CalculateStatisticsCommand implements ConsoleHandler {
     private void calculateStatistics(String nameOfDepartment) {
         Department department = departmentService.findByName(nameOfDepartment);
         List<Employee> employees = department.getEmployees();
-        Map<Employee.Degree, List<Employee>> statistics = employees.stream()
-                .collect(Collectors.groupingBy(Employee::getTitle));
+        Map<Employee.Degree, Long> statistics = employees.stream()
+                .collect(Collectors.groupingBy(Employee::getTitle, Collectors.counting()));
 
         statistics.entrySet().stream()
-                .map(entry -> entry.getKey() + ": " + entry.getValue().size())
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
                 .forEach(System.out::println);
     }
 }
