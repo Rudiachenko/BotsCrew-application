@@ -1,10 +1,8 @@
-package application.console.answer;
+package com.university.console.answer;
 
-import application.console.ConsoleHandler;
-import application.model.Department;
-import application.model.Employee;
-import application.service.DepartmentService;
-import java.util.ArrayList;
+import com.university.console.ConsoleHandler;
+import com.university.model.Employee;
+import com.university.service.DepartmentService;
 import java.util.List;
 import java.util.Scanner;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,20 +25,18 @@ public class GlobalSearchCommand implements ConsoleHandler {
         if (template.equalsIgnoreCase("menu")) {
             return;
         }
-        List<String> answer = new ArrayList<>();
-        List<Department> allDepartments = departmentService.findAll();
+        findEmployeesByContainsTemplate(template);
+    }
 
-        for (Department department : allDepartments) {
-            List<Employee> employees = department.getEmployees();
-            employees.stream()
-                    .map(employee -> employee.getName() + " " + employee.getLastName())
-                    .filter(employee -> !answer.contains(employee) && employee.contains(template))
-                    .forEach(answer::add);
-        }
+    private void findEmployeesByContainsTemplate(String template) {
+        List<Employee> answer = departmentService.findByContains(template);
         if (answer.size() == 0) {
             System.out.printf("No employees with template '%s'%n", template);
         } else {
-            System.out.println(answer);
+            System.out.printf("All employees whose name contains '%s':%n", template);
+            answer.stream()
+                    .map(employee -> employee.getName() + " " + employee.getLastName())
+                    .forEach(System.out::println);
         }
     }
 }

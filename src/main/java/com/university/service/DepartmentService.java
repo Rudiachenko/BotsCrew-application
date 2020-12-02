@@ -1,6 +1,7 @@
-package application.service;
+package com.university.service;
 
-import application.model.Department;
+import com.university.model.Department;
+import com.university.model.Employee;
 import java.util.List;
 
 public interface DepartmentService {
@@ -9,4 +10,6 @@ public interface DepartmentService {
     Department findByName(String name);
 
     List<Department> findAll();
+
+    List<Employee> findByContains(String template);
 }

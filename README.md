@@ -17,13 +17,14 @@ First all you need to have working MySQL RDBMS. Create schema with name `'depart
 1. Fork the project and import to Intellij IDEA.
 2. In resources directory open file application.properties.
 3. Change user and password to yours.
+4. Change the path to the file with logs.
 
 ##### There are 6 type of commands:
 
 1. `Who is head of department`
 2. `Show statistics`
 3. `Show the average salary for the department`
-4. `Show count of employee`
+4. `Show number of employees`
 5. `Global search`
 6. `quit`
 

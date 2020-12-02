@@ -1,4 +1,4 @@
-package application.model;
+package com.university.model;
 
 import java.util.List;
 import javax.persistence.Entity;
@@ -9,6 +9,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 @Entity
 @Table(name = "department")
@@ -18,7 +19,7 @@ public class Department {
     private Long id;
     private String name;
     @ManyToMany
-    @Cascade(org.hibernate.annotations.CascadeType.ALL)
+    @Cascade({CascadeType.ALL})
     private List<Employee> employees;
     @OneToOne
     private Employee headOfDepartment;

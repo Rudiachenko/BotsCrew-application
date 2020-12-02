@@ -1,7 +1,7 @@
-package application.service;
+package com.university.service;
 
-import application.model.Department;
-import application.model.Employee;
+import com.university.model.Department;
+import com.university.model.Employee;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

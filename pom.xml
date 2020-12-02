@@ -11,8 +11,8 @@
         <relativePath/>
     </parent>
 
-    <groupId>BotsCrew</groupId>
-    <artifactId>BotsCrew-application</artifactId>
+    <groupId>botscrew</groupId>
+    <artifactId>botscrew-application</artifactId>
     <version>1.0-SNAPSHOT</version>
     <name>ConsoleApplication</name>
     <description>Project for test task</description>

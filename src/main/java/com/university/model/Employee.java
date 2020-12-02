@@ -1,4 +1,4 @@
-package application.model;
+package com.university.model;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

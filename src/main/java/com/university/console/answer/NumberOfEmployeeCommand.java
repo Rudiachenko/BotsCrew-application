@@ -1,9 +1,9 @@
-package application.console.answer;
+package com.university.console.answer;
 
-import application.console.ConsoleHandler;
-import application.model.Department;
-import application.model.Employee;
-import application.service.DepartmentService;
+import com.university.console.ConsoleHandler;
+import com.university.model.Department;
+import com.university.model.Employee;
+import com.university.service.DepartmentService;
 import java.util.List;
 import java.util.Scanner;
 import javax.persistence.NoResultException;
@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class AverageSalaryCommand implements ConsoleHandler {
+public class NumberOfEmployeeCommand implements ConsoleHandler {
     private final DepartmentService departmentService;
 
     @Autowired
-    public AverageSalaryCommand(DepartmentService departmentService) {
+    public NumberOfEmployeeCommand(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
 
@@ -29,18 +29,17 @@ public class AverageSalaryCommand implements ConsoleHandler {
             return;
         }
         try {
-            Department department = departmentService.findByName(nameOfDepartment);
-            List<Employee> employees = department.getEmployees();
-            double salary = 0;
-            for (Employee employee : employees) {
-                salary = salary + employee.getSalary();
-            }
-            double averageSalary = Math.round(salary / employees.size() * 100.0) / 100.0;
-            System.out.println("The average salary of " + nameOfDepartment + " " + averageSalary);
+            calculateNumberOfEmployees(nameOfDepartment);
         } catch (NoResultException e) {
             System.out.println("No departments with name " + nameOfDepartment + " was found."
                     + "Please try again.");
             handleCommand();
         }
+    }
+
+    private void calculateNumberOfEmployees(String nameOfDepartment) {
+        Department department = departmentService.findByName(nameOfDepartment);
+        List<Employee> employeesOfDepartment = department.getEmployees();
+        System.out.println("Number of employees " + employeesOfDepartment.size());
     }
 }

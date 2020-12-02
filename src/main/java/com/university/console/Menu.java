@@ -1,4 +1,4 @@
-package application.console;
+package com.university.console;
 
 public class Menu {
     public void showMenu() {
@@ -7,7 +7,7 @@ public class Menu {
         System.out.println("2. Enter 'Show statistics' to show statistics");
         System.out.println("3. Enter 'Show the average salary for "
                 + "the department' to show average salary");
-        System.out.println("4. Enter 'Show count of employee' to show count of employee");
+        System.out.println("4. Enter 'Show number of employees' to show count of employee");
         System.out.println("5. Enter 'Global search' to show employees who contains {template}");
         System.out.println("6. Enter 'quit' to close application");
     }

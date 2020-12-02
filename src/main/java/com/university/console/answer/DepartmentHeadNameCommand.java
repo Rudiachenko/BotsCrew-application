@@ -1,17 +1,19 @@
-package application.console.answer;
+package com.university.console.answer;
 
-import application.console.ConsoleHandler;
-import application.model.Department;
-import application.model.Employee;
-import application.service.DepartmentService;
+import com.university.console.ConsoleHandler;
+import com.university.model.Department;
+import com.university.model.Employee;
+import com.university.service.DepartmentService;
 import java.util.Scanner;
 import javax.persistence.NoResultException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
 public class DepartmentHeadNameCommand implements ConsoleHandler {
     private final DepartmentService departmentService;
 
+    @Autowired
     public DepartmentHeadNameCommand(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
@@ -26,17 +28,21 @@ public class DepartmentHeadNameCommand implements ConsoleHandler {
             return;
         }
         try {
-            Department department = departmentService.findByName(nameOfDepartment);
-            Employee theHeadOfDepartment = department.getHeadOfDepartment();
-            String answer = " " + "Head of " + nameOfDepartment
-                    + " department is "
-                    + theHeadOfDepartment.getName() + " "
-                    + theHeadOfDepartment.getLastName();
-            System.out.println(answer);
+            findTheHeadOfDepartment(nameOfDepartment);
         } catch (NoResultException e) {
             System.out.println("No departments with name " + nameOfDepartment + " was found."
                     + "Please try again.");
             handleCommand();
         }
+    }
+
+    private void findTheHeadOfDepartment(String nameOfDepartment) {
+        Department department = departmentService.findByName(nameOfDepartment);
+        Employee theHeadOfDepartment = department.getHeadOfDepartment();
+        String answer = "Head of " + nameOfDepartment
+                + " department is "
+                + theHeadOfDepartment.getName() + " "
+                + theHeadOfDepartment.getLastName();
+        System.out.println(answer);
     }
 }

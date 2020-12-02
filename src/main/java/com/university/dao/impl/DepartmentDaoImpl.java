@@ -1,8 +1,9 @@
-package application.dao.impl;
+package com.university.dao.impl;
 
-import application.dao.DepartmentDao;
-import application.exceptions.DataProcessingException;
-import application.model.Department;
+import com.university.dao.DepartmentDao;
+import com.university.exceptions.DataProcessingException;
+import com.university.model.Department;
+import com.university.model.Employee;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.hibernate.Session;
@@ -23,7 +24,7 @@ public class DepartmentDaoImpl implements DepartmentDao {
     }
 
     @Override
-    public Department addData(Department department) {
+    public Department save(Department department) {
         Transaction transaction = null;
         Session session = null;
         try {
@@ -62,6 +63,17 @@ public class DepartmentDaoImpl implements DepartmentDao {
         try (Session session = sessionFactory.openSession()) {
             return session.createQuery("FROM Department d "
                     + "left join fetch d.employees", Department.class).getResultList();
+        }
+    }
+
+    @Override
+    public List<Employee> findByContains(String template) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Employee> query = session.createQuery("from Employee e "
+                    + "where e.name like concat('%', :template, '%') or "
+                    + "e.lastName like concat('%', :template, '%')", Employee.class);
+            query.setParameter("template", template);
+            return query.getResultList();
         }
     }
 }

@@ -1,4 +1,4 @@
-package application.config;
+package com.university.config;
 
 import java.util.Properties;
 import javax.sql.DataSource;
@@ -13,9 +13,9 @@ import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 @Configuration
 @PropertySource("classpath:db.properties")
 @ComponentScan(basePackages = {
-        "application.service",
-        "application.dao",
-        "application.console"
+        "com.university.service",
+        "com.university.dao",
+        "com.university.console"
 })
 public class AppConfig {
     private final Environment environment;
@@ -44,7 +44,7 @@ public class AppConfig {
         properties.put("hibernate.hbm2ddl.auto", environment.getProperty("hibernate.hbm2ddl.auto"));
 
         factoryBean.setHibernateProperties(properties);
-        factoryBean.setPackagesToScan("application.model");
+        factoryBean.setPackagesToScan("com.university.model");
         return factoryBean;
     }
 }

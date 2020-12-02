@@ -1,8 +1,8 @@
-package application.console.answer;
+package com.university.console.answer;
 
-import application.console.Application;
-import application.console.ConsoleHandler;
-import application.service.DepartmentService;
+import com.university.console.Application;
+import com.university.console.ConsoleHandler;
+import com.university.service.DepartmentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 

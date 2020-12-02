@@ -1,9 +1,9 @@
-package application.console.answer;
+package com.university.console.answer;
 
-import application.console.ConsoleHandler;
-import application.model.Department;
-import application.model.Employee;
-import application.service.DepartmentService;
+import com.university.console.ConsoleHandler;
+import com.university.model.Department;
+import com.university.model.Employee;
+import com.university.service.DepartmentService;
 import java.util.List;
 import java.util.Scanner;
 import javax.persistence.NoResultException;
@@ -11,11 +11,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CountOfEmployeeCommand implements ConsoleHandler {
+public class AverageSalaryCommand implements ConsoleHandler {
     private final DepartmentService departmentService;
 
     @Autowired
-    public CountOfEmployeeCommand(DepartmentService departmentService) {
+    public AverageSalaryCommand(DepartmentService departmentService) {
         this.departmentService = departmentService;
     }
 
@@ -29,13 +29,19 @@ public class CountOfEmployeeCommand implements ConsoleHandler {
             return;
         }
         try {
-            Department department = departmentService.findByName(nameOfDepartment);
-            List<Employee> employeesOfDepartment = department.getEmployees();
-            System.out.println("Count of employee " + employeesOfDepartment.size());
+            calculateAverageSalary(nameOfDepartment);
         } catch (NoResultException e) {
             System.out.println("No departments with name " + nameOfDepartment + " was found."
                     + "Please try again.");
             handleCommand();
         }
+    }
+
+    private void calculateAverageSalary(String nameOfDepartment) {
+        Department department = departmentService.findByName(nameOfDepartment);
+        List<Employee> employees = department.getEmployees();
+        double salary = employees.stream().mapToDouble(Employee::getSalary).sum();
+        double averageSalary = Math.round(salary / employees.size() * 100.0) / 100.0;
+        System.out.println("The average salary of " + nameOfDepartment + " " + averageSalary);
     }
 }

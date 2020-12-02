@@ -1,8 +1,9 @@
-package application.service.impl;
+package com.university.service.impl;
 
-import application.dao.DepartmentDao;
-import application.model.Department;
-import application.service.DepartmentService;
+import com.university.dao.DepartmentDao;
+import com.university.model.Department;
+import com.university.model.Employee;
+import com.university.service.DepartmentService;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,7 +19,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Department addData(Department department) {
-        return departmentDao.addData(department);
+        return departmentDao.save(department);
     }
 
     @Override
@@ -29,5 +30,10 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Override
     public List<Department> findAll() {
         return departmentDao.findAll();
+    }
+
+    @Override
+    public List<Employee> findByContains(String template) {
+        return departmentDao.findByContains(template);
     }
 }
