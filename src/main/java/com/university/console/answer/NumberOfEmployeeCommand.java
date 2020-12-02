@@ -40,6 +40,6 @@ public class NumberOfEmployeeCommand implements ConsoleHandler {
     private void calculateNumberOfEmployees(String nameOfDepartment) {
         Department department = departmentService.findByName(nameOfDepartment);
         List<Employee> employeesOfDepartment = department.getEmployees();
-        System.out.println("Number of employees " + employeesOfDepartment.size());
+        System.out.println("Number of employees: " + employeesOfDepartment.size());
     }
 }
