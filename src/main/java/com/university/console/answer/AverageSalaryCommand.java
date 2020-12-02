@@ -42,6 +42,7 @@ public class AverageSalaryCommand implements ConsoleHandler {
         List<Employee> employees = department.getEmployees();
         double salary = employees.stream().mapToDouble(Employee::getSalary).sum();
         double averageSalary = Math.round(salary / employees.size() * 100.0) / 100.0;
-        System.out.println("The average salary of " + nameOfDepartment + " " + averageSalary);
+        System.out.println("The average salary of " + nameOfDepartment
+                + " department is " + averageSalary);
     }
 }
