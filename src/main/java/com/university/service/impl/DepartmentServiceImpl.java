@@ -18,7 +18,7 @@ public class DepartmentServiceImpl implements DepartmentService {
     }
 
     @Override
-    public Department addData(Department department) {
+    public Department save(Department department) {
         return departmentDao.save(department);
     }
 

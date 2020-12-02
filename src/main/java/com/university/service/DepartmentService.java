@@ -5,7 +5,7 @@ import com.university.model.Employee;
 import java.util.List;
 
 public interface DepartmentService {
-    Department addData(Department department);
+    Department save(Department department);
 
     Department findByName(String name);
 
