@@ -44,7 +44,7 @@ public class DataInjector {
         philosophy.setEmployees(List.of(bob, alice, boris));
         philosophy.setHeadOfDepartment(alice);
 
-        departmentService.addData(politology);
-        departmentService.addData(philosophy);
+        departmentService.save(politology);
+        departmentService.save(philosophy);
     }
 }
